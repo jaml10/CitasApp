@@ -13,18 +13,6 @@ public class UsersController : ControllerBase
     {
         _context = context;
     }
-/*
-    [HttpGet]
-    public ActionResult<IEnumerable<AppUser>> GetUsers()
-    {
-        return _context.Users.ToList();
-    }
-    [HttpGet("{Id}")]
-    public ActionResult<AppUser> GetUser(int id)
-    {
-        return _context.Users.Find(id);
-    }
-}*/
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
