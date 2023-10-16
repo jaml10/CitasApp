@@ -16,11 +16,10 @@ export class HomeComponent implements OnInit {
     this.getUsers();
   }
 
-  registerToggle(): void{
+  registerToggle(): void {
     this.registerMode = !this.registerMode;
   }
 
-  
   getUsers() {
     this.http.get('https://localhost:5001/api/users').subscribe({
       next: response => this.users = response,
