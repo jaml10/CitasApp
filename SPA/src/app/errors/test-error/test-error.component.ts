@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./test-error.component.css']
 })
 export class TestErrorComponent implements OnInit {
-  baseUrl = "http://localhost:5001/api/";
+  baseUrl = "https://localhost:5001/api/";
   validationErrors: string [] = [];
 
   constructor(private http: HttpClient) {}
@@ -23,24 +23,24 @@ export class TestErrorComponent implements OnInit {
         this.validationErrors = error;
       }
     })
-  } 
+  }
 
   get400Error(): void {
-    this.http.get(this.baseUrl + "buggy/bad-request",).subscribe({
+    this.http.get(this.baseUrl + "buggy/bad-request").subscribe({
       next: response => console.log(response),
       error: error => console.log(error)
     })
   }
-  
+
   get401Error(): void {
     this.http.get(this.baseUrl + "buggy/auth").subscribe({
       next: response => console.log(response),
       error: error => console.log(error)
     })
-  }  
+  }
 
   get404Error(): void {
-    this.http.get(this.baseUrl + "buggy/not-fount").subscribe({
+    this.http.get(this.baseUrl + "buggy/not-found").subscribe({
       next: response => console.log(response),
       error: error => console.log(error)
     })
@@ -52,5 +52,5 @@ export class TestErrorComponent implements OnInit {
       error: error => console.log(error)
     })
   }
-  
+
 }

@@ -1,12 +1,7 @@
-using System.Security.Cryptography;
-using System.Text;
-using API.Data;
-using API.DTOs;
+﻿using API.Data;
 using API.Entities;
-using API.Interfaces;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
@@ -17,15 +12,15 @@ public class BuggyController : BaseApiController
     public BuggyController(DataContext context)
     {
         _context = context;
-    }    
-    
+    }
+
     [Authorize]
     [HttpGet("auth")]
     public ActionResult<string> GetSecret()
     {
         return "Secreto de la API";
     }
-    
+
     [HttpGet("not-found")]
     public ActionResult<AppUser> GetNotFound()
     {
@@ -35,7 +30,7 @@ public class BuggyController : BaseApiController
 
         return thing;
     }
-    
+
     [HttpGet("server-error")]
     public ActionResult<string> GetServerError()
     {
@@ -44,13 +39,12 @@ public class BuggyController : BaseApiController
         var thingToReturn = thing.ToString();
 
         return thingToReturn;
-
     }
-    
+
     [HttpGet("bad-request")]
     public ActionResult<string> GetBadRequest()
     {
-        return BadRequest("Usted ha seleccionado algo de forma incorrecta");
+        return BadRequest("Usted ha solicitado algo de forma incorrecta.");
     }
 
 }

@@ -7,8 +7,8 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { Observable, catchError } from 'rxjs';
-import { ToastrService } from 'ngx-toastr';
 import { NavigationExtras, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -29,28 +29,28 @@ export class ErrorInterceptor implements HttpInterceptor {
                   }
                 }
                 throw modelStateErrors.flat();
-              } else{
+              } else {
                 this.toastr.error(error.error, error.status.toString());
               }
               break;
             case 401:
-              this.toastr.error("Debe de ingresar al sistema", error.status.toString());
+              this.toastr.error("Debes ingresar al sistema", error.status.toString());
               break;
             case 404:
               this.router.navigateByUrl("/not-found");
               break;
             case 500:
               const navigationExtras: NavigationExtras = { state: { error: error.error } };
-              this.router.navigateByUrl("/sever-error", navigationExtras);
+              this.router.navigateByUrl("/server-error", navigationExtras);
               break;
-              default:
-                this.toastr.error("Algo inesperado ha ocurrido");
-                console.log(error);
-                break;   
-            }
+            default:
+              this.toastr.error("Algo inesperado ha ocurrido");
+              console.log(error);
+              break;
           }
-          throw error;
-        })
+        }
+        throw error;
+      })
     );
   }
 }

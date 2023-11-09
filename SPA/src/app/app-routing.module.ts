@@ -23,8 +23,8 @@ const routes: Routes = [
       { path: "messages", component: MessagesComponent }
     ]
   },
-  { path: "error", component: TestErrorComponent },
-  { path: "not-fuond", component: NotFoundComponent },
+  { path: "errors", component: TestErrorComponent },
+  { path: "not-found", component: NotFoundComponent },
   { path: "server-error", component: ServerErrorComponent },
   { path: "**", component: NotFoundComponent, pathMatch: "full" },
 ];
