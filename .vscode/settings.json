@@ -1,3 +1,4 @@
 {
-    "dotnet.defaultSolution": "CitasApp.sln"
+    "dotnet.defaultSolution": "CitasApp.sln",
+    "editor.fontSize": 12
 }
