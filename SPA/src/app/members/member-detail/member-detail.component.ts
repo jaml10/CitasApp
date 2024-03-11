@@ -15,13 +15,14 @@ import { MembersService } from 'src/app/_services/members.service';
 })
 export class MemberDetailComponent implements OnInit {
   member: IMember | undefined;
-
-  constructor(private membersService: MembersService, private route: ActivatedRoute) {}
   images: GalleryItem[] = [];
+
+  constructor(private membersService: MembersService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.loadMember();
   }
+
   loadMember() {
     const username = this.route.snapshot.paramMap.get("username");
     if (!username) return;
@@ -36,7 +37,6 @@ export class MemberDetailComponent implements OnInit {
   getImages() {
     if (!this.member) return;
     for (const photo of this.member?.photos) {
-      this.images.push(new ImageItem({ src: photo.url, thumb: photo.url }));
       this.images.push(new ImageItem({ src: photo.url, thumb: photo.url }));
     }
   }
